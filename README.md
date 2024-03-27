@@ -25,6 +25,7 @@ Within VSCode, the necessary folders for Airflow usage were created, alongside t
 ![image](https://github.com/LuisBCT/client_miles/assets/124119564/3aec28cc-98ab-41ef-96f5-831b17dfab70)
 
 Then a .env file was established to securely store environment variables required for authentication using `DefaultAzureCredential`.
+
 ![image](https://github.com/LuisBCT/client_miles/assets/124119564/8987f8fb-8e6e-4588-80b7-0111d3533a7a)
 
  Finally, modifications were made to the Docker-compose file, with particular focus on the following key aspects:
@@ -33,7 +34,9 @@ Then a .env file was established to securely store environment variables require
 ![image](https://github.com/LuisBCT/client_miles/assets/124119564/2b7b47cb-c36e-4868-9f3d-50b41d21e97d)
 
 ## Dag development
-In this case the connection with the storage account was by *Microsoft Entra ID* according to the [documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-directory-file-acl-python?tabs=azure-ad) the `DefaultAzureCredential` automatically will use the enviroment variables `AZURE_CLIENT_ID` `AZURE_TENANT_ID` `AZURE_CLIENT_SECRET` to access the storage account. So was defined the function `get_service_client_token_credential`
+- In this case the connection with the storage account was by *Microsoft Entra ID* according to the [documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-directory-file-acl-python?tabs=azure-ad) the `DefaultAzureCredential` automatically will use the enviroment variables `AZURE_CLIENT_ID` `AZURE_TENANT_ID` `AZURE_CLIENT_SECRET` to access the storage account. So was defined the function `get_service_client_token_credential` in the `azure_utils` script.
+- Specific tasks were created for each type (locations, products and transactions). There was also the option of creating a single task, but by personal decision the 3 tasks were chosen separately.
+- The metadata file contains only the names of the uploaded files, but may also contain additional information.
 
 
 
